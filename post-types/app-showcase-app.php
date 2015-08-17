@@ -47,17 +47,11 @@ class App_Showcase_App {
 			'not_found'          => __( 'Not found', 'ogdch' ),
 			'not_found_in_trash' => __( 'Not found in Trash', 'ogdch' ),
 		);
-		$rewrite = array(
-			'slug'                => 'apps',
-			'with_front'          => true,
-			'pages'               => true,
-			'feeds'               => true,
-		);
 		$args = array(
 			'label'               => __( 'Apps', 'ogdch' ),
 			'description'         => __( 'The App directory', 'ogdch' ),
 			'labels'              => $labels,
-			'supports'            => array( 'title', 'editor', 'thumbnail', ),
+			'supports'            => array( 'title', 'editor', 'thumbnail' ),
 			'taxonomies'          => array( 'post_tag' ),
 			'hierarchical'        => false,
 			'public'              => true,
@@ -71,7 +65,7 @@ class App_Showcase_App {
 			'has_archive'         => true,
 			'exclude_from_search' => false,
 			'publicly_queryable'  => true,
-			'rewrite'             => $rewrite,
+			'rewrite'             => array( 'slug' => 'apps' ),
 			'map_meta_cap'        => true,
 			'capability_type'     => 'app',
 			'capabilities'        => array(
