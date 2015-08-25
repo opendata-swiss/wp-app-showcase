@@ -11,7 +11,7 @@
 class App_Showcase_App {
 
 	// Be careful max. 20 characters allowed!
-	const POST_TYPE = 'app-showcase-app';
+	const POST_TYPE = 'app';
 	const FIELD_PREFIX = '_app-showcase-app_';
 
 	/**
@@ -65,7 +65,6 @@ class App_Showcase_App {
 			'has_archive'         => true,
 			'exclude_from_search' => false,
 			'publicly_queryable'  => true,
-			'rewrite'             => array( 'slug' => 'apps' ),
 			'map_meta_cap'        => true,
 			'capability_type'     => 'app',
 			'capabilities'        => array(
