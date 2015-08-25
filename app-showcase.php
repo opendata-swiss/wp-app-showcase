@@ -56,7 +56,6 @@ if ( ! class_exists( 'App_Showcase', false ) ) {
 		public function __construct() {
 			add_action( 'init', array( $this, 'bootstrap' ), 0 );
 			add_action( 'admin_init', array( $this, 'add_scripts' ) );
-			register_activation_hook( __FILE__, array( $this, 'activate' ) );
 		}
 
 		/**
@@ -86,35 +85,7 @@ if ( ! class_exists( 'App_Showcase', false ) ) {
 		 * @return void
 		 */
 		protected function load_dependencies() {
-			require_once plugin_dir_path( __FILE__ ) . 'post-types/app-showcase-app.php';
-		}
-
-		/**
-		 * Activate the plugin.
-		 *
-		 * @return void
-		 */
-		public function activate() {
-			$post_types = array(
-				'apps',
-			);
-			// Add all capabilities of plugin to administrator role (save in database) to make them visible in backend.
-			$admin_role = get_role( 'administrator' );
-			if ( is_object( $admin_role ) ) {
-				foreach ( $post_types as $post_type ) {
-					$admin_role->add_cap( 'edit_' . $post_type );
-					$admin_role->add_cap( 'edit_others_' . $post_type );
-					$admin_role->add_cap( 'publish_' . $post_type );
-					$admin_role->add_cap( 'read_private_' . $post_type );
-					$admin_role->add_cap( 'delete_' . $post_type );
-					$admin_role->add_cap( 'delete_private_' . $post_type );
-					$admin_role->add_cap( 'delete_published_' . $post_type );
-					$admin_role->add_cap( 'delete_others_' . $post_type );
-					$admin_role->add_cap( 'edit_private_' . $post_type );
-					$admin_role->add_cap( 'edit_published_' . $post_type );
-					$admin_role->add_cap( 'create_' . $post_type );
-				}
-			}
+			require_once plugin_dir_path( __FILE__ ) . 'post-types/app.php';
 		}
 
 	}
