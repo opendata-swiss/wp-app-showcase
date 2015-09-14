@@ -55,7 +55,6 @@ if ( ! class_exists( 'App_Showcase', false ) ) {
 		 */
 		public function __construct() {
 			add_action( 'init', array( $this, 'bootstrap' ), 0 );
-			add_action( 'admin_init', array( $this, 'add_scripts' ) );
 		}
 
 		/**
@@ -67,16 +66,6 @@ if ( ! class_exists( 'App_Showcase', false ) ) {
 			$this->load_dependencies();
 
 			new App_Showcase_App();
-		}
-
-		/**
-		 * Add scripts and styles.
-		 *
-		 * @return void
-		 */
-		public function add_scripts() {
-			wp_register_style( self::$plugin_slug . '-base', plugins_url( 'assets/css/base.css', __FILE__ ) );
-			wp_enqueue_style( self::$plugin_slug . '-base' );
 		}
 
 		/**
