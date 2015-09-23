@@ -156,5 +156,22 @@ class App_Showcase_App {
 			'id'         => self::FIELD_PREFIX . 'icon',
 			'type'       => 'file',
 		) );
+
+		// Dataset relations
+		$relations_group = $cmb->add_field( array(
+			'id'      => self::FIELD_PREFIX . 'relations',
+			'type'    => 'group',
+			'options' => array(
+				'group_title'   => __( 'Dataset Relation {#}', 'ogdch' ),
+				'add_button'    => __( 'Add another Dataset Relation', 'ogdch' ),
+				'remove_button' => __( 'Remove Dataset Relation', 'ogdch' ),
+			),
+		) );
+
+		$cmb->add_group_field( $relations_group, array(
+			'name' => __( 'Dataset', 'ogdch' ),
+			'id'   => 'dataset_id',
+			'type' => 'text',
+		) );
 	}
 }
