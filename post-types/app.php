@@ -105,7 +105,7 @@ class App_Showcase_App {
 			'ajax' => array(
 				'url' => CKAN_SEARCH_API_ENDPOINT,
 				'dataType' => 'json',
-                'delay' => 250,
+				'delay' => 250,
 			),
 			//'tags' => true,
 			'minimumInputLength' => 3,
@@ -117,14 +117,14 @@ class App_Showcase_App {
 		        style="width: 50%"
 		        name="<?php esc_attr_e( $field->args['_name'] ); ?>"
 		        id="<?php esc_attr_e( $field->args['_id'] ); ?>">
-			<?php if ($escaped_value) : ?>
+			<?php if ( $escaped_value ) : ?>
 				<?php $title = Ckan_Backend_Helper::get_dataset_title( $escaped_value ); ?>
 				<option selected="selected" value="<?php esc_attr_e( $escaped_value )?>"><?php esc_html_e( $title ); ?></option>
 			<?php endif; ?>
 		</select>
 		<script type="text/javascript">
 			(function($) {
-				var options = <?php echo json_encode( $options ) . ";\n"; ?>
+				var options = <?php echo wp_json_encode( $options ) . ";\n"; ?>
 				options.ajax.data = dataFn;
 				options.ajax.processResults = resultFn;
 				options.templateResult = format;
@@ -133,20 +133,20 @@ class App_Showcase_App {
 				options.formatNoMatches = noMatchFn;
 				options.language = {
 					inputTooLong: function (args) {
-						return '<?php _e('Bitte weniger Zeichen eingeben', 'ogdch'); ?>';
+						return '<?php esc_html_e( __( 'Bitte weniger Zeichen eingeben', 'ogdch' ) ); ?>';
 					},
 					inputTooShort: function (args) {
-						return '<?php _e('Bitte mehr Zeichen eingeben', 'ogdch'); ?>';
+						return '<?php esc_html_e( __( 'Bitte mehr Zeichen eingeben', 'ogdch' ) ); ?>';
 					},
 					noResults: function () {
-						return '<?php _e('Keine Treffer gefunden', 'ogdch'); ?>';
+						return '<?php esc_html_e( __( 'Keine Treffer gefunden', 'ogdch' ) ); ?>';
 					},
 					searching: function () {
-						return '<?php _e('Search'); ?>…';
+						return '<?php esc_html_e( __( 'Search' ) ); ?>…';
 					}
 				};
 
-				$("[name='<?php echo $field->args['_name']; ?>'").select2(options);
+				$("[name='<?php esc_attr_e( $field->args['_name'] ); ?>'").select2(options);
 
 				var fieldGroupId     = '_app-showcase-app_relations';
 				var fieldGroupTable = $( document.getElementById( fieldGroupId + '_repeat' ) );
@@ -166,7 +166,7 @@ class App_Showcase_App {
 	}
 
 
-		/**
+	/**
 	 * Define the custom fields of this post type
 	 *
 	 * @return void
