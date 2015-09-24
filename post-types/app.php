@@ -106,7 +106,7 @@ class App_Showcase_App {
 
 		// URL
 		$cmb->add_field( array(
-			'name' => __( 'URL', 'ogdch' ),
+			'name' => __( 'Landing page', 'ogdch' ),
 			'desc' => __( 'Landing page of app', 'ogdch' ),
 			'id'   => self::FIELD_PREFIX . 'url',
 			'type' => 'text_url',
@@ -131,22 +131,11 @@ class App_Showcase_App {
 		// Author Email
 		$cmb->add_field( array(
 			'name' => __( 'Author Email', 'ogdch' ),
-			'desc' => __( 'Email address of author', 'ogdch' ),
 			'id'   => self::FIELD_PREFIX . 'author_email',
 			'type' => 'text_email',
 			'attributes'  => array(
 				'placeholder' => 'author@app.dev',
 				'required'    => 'required',
-			),
-		) );
-
-		// Version
-		$cmb->add_field( array(
-			'name'       => __( 'Version', 'ogdch' ),
-			'id'         => self::FIELD_PREFIX . 'version',
-			'type'       => 'text_small',
-			'attributes'  => array(
-				'placeholder' => '1.2.0',
 			),
 		) );
 
