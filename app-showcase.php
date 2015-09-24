@@ -55,6 +55,7 @@ if ( ! class_exists( 'App_Showcase', false ) ) {
 		 */
 		public function __construct() {
 			add_action( 'init', array( $this, 'bootstrap' ), 0 );
+			add_action( 'admin_enqueue_scripts', array( $this, 'add_scripts' ) );
 		}
 
 		/**
@@ -75,6 +76,22 @@ if ( ! class_exists( 'App_Showcase', false ) ) {
 		 */
 		protected function load_dependencies() {
 			require_once plugin_dir_path( __FILE__ ) . 'post-types/app.php';
+		}
+
+		/**
+		 * Add scripts and styles.
+		 *
+		 * @return void
+		 */
+		public function add_scripts() {
+			wp_enqueue_script( 'select2', '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js', null, null, false );
+			wp_enqueue_script( 'dataset-search', plugins_url( 'assets/javascript/dataset_search.js', __FILE__ ), array( 'select2' ), null, false );
+			wp_enqueue_style( 'select2-style', '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css' );
+			wp_localize_script( 'app-config', 'ogdConfig',
+				array(
+					'lang'            => pll_current_language(),
+				)
+			);
 		}
 
 	}

@@ -22,6 +22,9 @@ class App_Showcase_App {
 
 		// define backend fields
 		add_action( 'cmb2_init', array( $this, 'define_fields' ) );
+
+		// add custom CMB2 field type dataset_search
+		add_action( 'cmb2_render_dataset_search', array( $this, 'cmb2_render_callback_dataset_search' ), 10, 5 );
 	}
 
 	/**
@@ -89,6 +92,81 @@ class App_Showcase_App {
 	}
 
 	/**
+	 * Renders CMB2 field of type dataset_identifier
+	 *
+	 * @param CMB2_Field $field The passed in `CMB2_Field` object.
+	 * @param mixed      $escaped_value The value of this field escaped. It defaults to `sanitize_text_field`.
+	 * @param int        $object_id The ID of the current object.
+	 * @param string     $object_type The type of object you are working with.
+	 * @param CMB2_Types $field_type_object This `CMB2_Types` object.
+	 */
+	public function cmb2_render_callback_dataset_search( $field, $escaped_value, $object_id, $object_type, $field_type_object ) {
+		$options = array(
+			'ajax' => array(
+				'url' => CKAN_SEARCH_API_ENDPOINT,
+				'dataType' => 'json',
+                'delay' => 250,
+			),
+			//'tags' => true,
+			'minimumInputLength' => 3,
+			'placeholder' => __( 'Datensatz suchen…', 'ogdch' ),
+			'allowClear'  => true,
+		);
+		?>
+		<select class="search-box"
+		        style="width: 50%"
+		        name="<?php esc_attr_e( $field->args['_name'] ); ?>"
+		        id="<?php esc_attr_e( $field->args['_id'] ); ?>">
+			<?php if ($escaped_value) : ?>
+				<?php $title = Ckan_Backend_Helper::get_dataset_title( $escaped_value ); ?>
+				<option selected="selected" value="<?php esc_attr_e( $escaped_value )?>"><?php esc_html_e( $title ); ?></option>
+			<?php endif; ?>
+		</select>
+		<script type="text/javascript">
+			(function($) {
+				var options = <?php echo json_encode( $options ) . ";\n"; ?>
+				options.ajax.data = dataFn;
+				options.ajax.processResults = resultFn;
+				options.templateResult = format;
+				options.templateSelection = formatSelection;
+				options.escapeMarkup = escapeFn;
+				options.formatNoMatches = noMatchFn;
+				options.language = {
+					inputTooLong: function (args) {
+						return '<?php _e('Bitte weniger Zeichen eingeben', 'ogdch'); ?>';
+					},
+					inputTooShort: function (args) {
+						return '<?php _e('Bitte mehr Zeichen eingeben', 'ogdch'); ?>';
+					},
+					noResults: function () {
+						return '<?php _e('Keine Treffer gefunden', 'ogdch'); ?>';
+					},
+					searching: function () {
+						return '<?php _e('Search'); ?>…';
+					}
+				};
+
+				$("[name='<?php echo $field->args['_name']; ?>'").select2(options);
+
+				var fieldGroupId     = '_app-showcase-app_relations';
+				var fieldGroupTable = $( document.getElementById( fieldGroupId + '_repeat' ) );
+				fieldGroupTable
+					.on( 'cmb2_add_row', function(event, row) {
+						var name = $(row).find('.search-box')[0].name;
+						//remove the previous select2 rendering, as CMB2 copies everything
+						$("[name='" + name + "'] + .select2-container").remove();
+						var new_select = $("[name='" + name + "'").select2(options);
+						// select empty value as original is copied
+						new_select.val("").trigger("change");
+					})
+			})( jQuery );
+		</script>
+
+		<?php
+	}
+
+
+		/**
 	 * Define the custom fields of this post type
 	 *
 	 * @return void
@@ -146,6 +224,12 @@ class App_Showcase_App {
 			'type'       => 'file',
 		) );
 
+		$cmb->add_field( array(
+			'name' => __( 'Dataset', 'ogdch' ),
+			'id'   => self::FIELD_PREFIX .  'dataset_id[]',
+			'type' => 'dataset_search',
+		) );
+
 		// Dataset relations
 		$relations_group = $cmb->add_field( array(
 			'id'      => self::FIELD_PREFIX . 'relations',
@@ -160,7 +244,7 @@ class App_Showcase_App {
 		$cmb->add_group_field( $relations_group, array(
 			'name' => __( 'Dataset', 'ogdch' ),
 			'id'   => 'dataset_id',
-			'type' => 'text',
+			'type' => 'dataset_search',
 		) );
 	}
 }
