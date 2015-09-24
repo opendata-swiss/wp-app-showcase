@@ -140,16 +140,6 @@ class App_Showcase_App {
 			),
 		) );
 
-		// Version
-		$cmb->add_field( array(
-			'name'       => __( 'Version', 'ogdch' ),
-			'id'         => self::FIELD_PREFIX . 'version',
-			'type'       => 'text_small',
-			'attributes'  => array(
-				'placeholder' => '1.2.0',
-			),
-		) );
-
 		// Icon
 		$cmb->add_field( array(
 			'name'       => __( 'Icon', 'ogdch' ),
