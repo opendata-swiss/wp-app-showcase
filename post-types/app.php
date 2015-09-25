@@ -102,7 +102,7 @@ class App_Showcase_App {
 	 */
 	public function cmb2_render_callback_dataset_search( $field, $escaped_value, $object_id, $object_type, $field_type_object ) {
 		// Check if wp-ckan-backend plugin is active
-		if( ! is_plugin_active( 'wp-ckan-backend/ckan-backend.php' ) ) {
+		if ( ! is_plugin_active( 'wp-ckan-backend/ckan-backend.php' ) ) {
 			esc_attr_e( 'Please activate wp-ckan-backend plugin', 'ogdch' );
 			return;
 		}
