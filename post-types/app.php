@@ -101,17 +101,11 @@ class App_Showcase_App {
 	 * @param CMB2_Types $field_type_object This `CMB2_Types` object.
 	 */
 	public function cmb2_render_callback_dataset_search( $field, $escaped_value, $object_id, $object_type, $field_type_object ) {
-		$options = array(
-			'ajax' => array(
-				'url' => CKAN_SEARCH_API_ENDPOINT,
-				'dataType' => 'json',
-				'delay' => 250,
-			),
-			//'tags' => true,
-			'minimumInputLength' => 3,
-			'placeholder' => __( 'Datensatz suchen…', 'ogdch' ),
-			'allowClear'  => true,
-		);
+		// Check if wp-ckan-backend plugin is active
+		if( ! is_plugin_active( 'wp-ckan-backend/ckan-backend.php' ) ) {
+			esc_attr_e( 'Please activate wp-ckan-backend plugin', 'ogdch' );
+			return;
+		}
 		?>
 		<select class="search-box"
 		        style="width: 50%"
@@ -124,44 +118,9 @@ class App_Showcase_App {
 		</select>
 		<script type="text/javascript">
 			(function($) {
-				var options = <?php echo wp_json_encode( $options ) . ";\n"; ?>
-				options.ajax.data = dataFn;
-				options.ajax.processResults = resultFn;
-				options.templateResult = format;
-				options.templateSelection = formatSelection;
-				options.escapeMarkup = escapeFn;
-				options.formatNoMatches = noMatchFn;
-				options.language = {
-					inputTooLong: function (args) {
-						return '<?php esc_html_e( __( 'Bitte weniger Zeichen eingeben', 'ogdch' ) ); ?>';
-					},
-					inputTooShort: function (args) {
-						return '<?php esc_html_e( __( 'Bitte mehr Zeichen eingeben', 'ogdch' ) ); ?>';
-					},
-					noResults: function () {
-						return '<?php esc_html_e( __( 'Keine Treffer gefunden', 'ogdch' ) ); ?>';
-					},
-					searching: function () {
-						return '<?php esc_html_e( __( 'Search' ) ); ?>…';
-					}
-				};
-
-				$("[name='<?php esc_attr_e( $field->args['_name'] ); ?>'").select2(options);
-
-				var fieldGroupId     = '_app-showcase-app_relations';
-				var fieldGroupTable = $( document.getElementById( fieldGroupId + '_repeat' ) );
-				fieldGroupTable
-					.on( 'cmb2_add_row', function(event, row) {
-						var name = $(row).find('.search-box')[0].name;
-						//remove the previous select2 rendering, as CMB2 copies everything
-						$("[name='" + name + "'] + .select2-container").remove();
-						var new_select = $("[name='" + name + "'").select2(options);
-						// select empty value as original is copied
-						new_select.val("").trigger("change");
-					})
+				$("[name='<?php esc_attr_e( $field->args['_name'] ); ?>'").select2(select2_options);
 			})( jQuery );
 		</script>
-
 		<?php
 	}
 
