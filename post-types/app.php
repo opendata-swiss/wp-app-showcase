@@ -183,12 +183,6 @@ class App_Showcase_App {
 			'type'       => 'file',
 		) );
 
-		$cmb->add_field( array(
-			'name' => __( 'Dataset', 'ogdch' ),
-			'id'   => self::FIELD_PREFIX .  'dataset_id[]',
-			'type' => 'dataset_search',
-		) );
-
 		// Dataset relations
 		$relations_group = $cmb->add_field( array(
 			'id'      => self::FIELD_PREFIX . 'relations',
