@@ -22,6 +22,9 @@ class App_Showcase_App {
 
 		// define backend fields
 		add_action( 'cmb2_init', array( $this, 'define_fields' ) );
+
+		// add custom CMB2 field type dataset_search
+		add_action( 'cmb2_render_dataset_search', array( $this, 'cmb2_render_callback_dataset_search' ), 10, 5 );
 	}
 
 	/**
@@ -87,6 +90,40 @@ class App_Showcase_App {
 		);
 		register_post_type( self::POST_TYPE, $args );
 	}
+
+	/**
+	 * Renders CMB2 field of type dataset_identifier
+	 *
+	 * @param CMB2_Field $field The passed in `CMB2_Field` object.
+	 * @param mixed      $escaped_value The value of this field escaped. It defaults to `sanitize_text_field`.
+	 * @param int        $object_id The ID of the current object.
+	 * @param string     $object_type The type of object you are working with.
+	 * @param CMB2_Types $field_type_object This `CMB2_Types` object.
+	 */
+	public function cmb2_render_callback_dataset_search( $field, $escaped_value, $object_id, $object_type, $field_type_object ) {
+		// Check if wp-ckan-backend plugin is active
+		if ( ! is_plugin_active( 'wp-ckan-backend/ckan-backend.php' ) ) {
+			esc_attr_e( 'Please activate wp-ckan-backend plugin', 'ogdch' );
+			return;
+		}
+		?>
+		<select class="search-box"
+		        style="width: 50%"
+		        name="<?php esc_attr_e( $field->args['_name'] ); ?>"
+		        id="<?php esc_attr_e( $field->args['_id'] ); ?>">
+			<?php if ( $escaped_value ) : ?>
+				<?php $title = Ckan_Backend_Helper::get_dataset_title( $escaped_value ); ?>
+				<option selected="selected" value="<?php esc_attr_e( $escaped_value )?>"><?php esc_html_e( $title ); ?></option>
+			<?php endif; ?>
+		</select>
+		<script type="text/javascript">
+			(function($) {
+				$("[name='<?php esc_attr_e( $field->args['_name'] ); ?>'").select2(select2_options);
+			})( jQuery );
+		</script>
+		<?php
+	}
+
 
 	/**
 	 * Define the custom fields of this post type
@@ -160,7 +197,7 @@ class App_Showcase_App {
 		$cmb->add_group_field( $relations_group, array(
 			'name' => __( 'Dataset', 'ogdch' ),
 			'id'   => 'dataset_id',
-			'type' => 'text',
+			'type' => 'dataset_search',
 		) );
 	}
 }
