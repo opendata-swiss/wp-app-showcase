@@ -1,8 +1,8 @@
 // TODO localize / inject api constant
-var CKAN_API_ENDPOINT = 'http://ogdch.dev/api/3/';
+var CKAN_API_ENDPOINT = 'http://ogdch.dev/api/3/action/';
 var select2_options = {
     'ajax': {
-        url: CKAN_API_ENDPOINT + 'action/package_search',
+        url: CKAN_API_ENDPOINT + 'package_search',
         dataType: 'json',
         delay: 250,
         data: function(params) {
