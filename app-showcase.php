@@ -87,9 +87,14 @@ if ( ! class_exists( 'App_Showcase', false ) ) {
 			wp_enqueue_script( 'select2', '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js', null, null, false );
 			wp_enqueue_script( 'dataset-search', plugins_url( 'assets/javascript/dataset_search.js', __FILE__ ), array( 'select2' ), null, false );
 			wp_enqueue_style( 'select2-style', '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css' );
+			if( function_exists( 'pll_current_language' ) ) {
+				$current_language = pll_current_language();
+			} else {
+				$current_language = 'en';
+			}
 			wp_localize_script( 'app-config', 'ogdConfig',
 				array(
-					'lang'            => pll_current_language(),
+					'lang'            => $current_language,
 				)
 			);
 		}
