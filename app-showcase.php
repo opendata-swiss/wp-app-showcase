@@ -94,7 +94,7 @@ if ( ! class_exists( 'App_Showcase', false ) ) {
 			}
 			wp_localize_script( 'app-config', 'ogdConfig',
 				array(
-					'lang'            => $current_language,
+					'lang' => $current_language,
 				)
 			);
 		}
