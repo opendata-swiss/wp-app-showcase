@@ -157,7 +157,7 @@ class App_Showcase_App {
 			),
 		) );
 
-		if( class_exists( 'Ckan_Backend_Local_Dataset' ) ) {
+		if ( class_exists( 'Ckan_Backend_Local_Dataset' ) ) {
 			$cmb->add_group_field( $relations_group, array(
 				'name' => __( 'Dataset', 'ogdch' ),
 				'id'   => 'dataset_id',
