@@ -31,25 +31,25 @@ class App_Showcase_App {
 	 */
 	public function register_post_type() {
 		$labels = array(
-			'name'               => __( 'Apps', 'ogdch' ),
-			'singular_name'      => __( 'App', 'ogdch' ),
-			'menu_name'          => __( 'Apps', 'ogdch' ),
-			'name_admin_bar'     => __( 'Apps', 'ogdch' ),
-			'parent_item_colon'  => __( 'Parent App:', 'ogdch' ),
-			'all_items'          => __( 'All Apps', 'ogdch' ),
-			'add_new_item'       => __( 'Add New App', 'ogdch' ),
+			'name'               => __( 'Applications', 'ogdch' ),
+			'singular_name'      => __( 'Application', 'ogdch' ),
+			'menu_name'          => __( 'Applications', 'ogdch' ),
+			'name_admin_bar'     => __( 'Applications', 'ogdch' ),
+			'parent_item_colon'  => __( 'Parent Application:', 'ogdch' ),
+			'all_items'          => __( 'All Applications', 'ogdch' ),
+			'add_new_item'       => __( 'Add New Application', 'ogdch' ),
 			'add_new'            => __( 'Add New', 'ogdch' ),
-			'new_item'           => __( 'New App', 'ogdch' ),
-			'edit_item'          => __( 'Edit App', 'ogdch' ),
-			'update_item'        => __( 'Update App', 'ogdch' ),
-			'view_item'          => __( 'View App', 'ogdch' ),
-			'search_items'       => __( 'Search Apps', 'ogdch' ),
+			'new_item'           => __( 'New Application', 'ogdch' ),
+			'edit_item'          => __( 'Edit Application', 'ogdch' ),
+			'update_item'        => __( 'Update Application', 'ogdch' ),
+			'view_item'          => __( 'View Application', 'ogdch' ),
+			'search_items'       => __( 'Search Applications', 'ogdch' ),
 			'not_found'          => __( 'Not found', 'ogdch' ),
 			'not_found_in_trash' => __( 'Not found in Trash', 'ogdch' ),
 		);
 		$args = array(
-			'label'               => __( 'Apps', 'ogdch' ),
-			'description'         => __( 'The App directory', 'ogdch' ),
+			'label'               => __( 'Applications', 'ogdch' ),
+			'description'         => __( 'The Application directory', 'ogdch' ),
 			'labels'              => $labels,
 			'supports'            => array( 'title', 'editor', 'thumbnail' ),
 			'taxonomies'          => array( 'post_tag' ),
@@ -97,7 +97,7 @@ class App_Showcase_App {
 		/* CMB Mainbox */
 		$cmb = new_cmb2_box( array(
 			'id'           => self::POST_TYPE . '-box',
-			'title'        => __( 'App Information', 'ogdch' ),
+			'title'        => __( 'Application Information', 'ogdch' ),
 			'object_types' => array( self::POST_TYPE ),
 			'context'      => 'normal',
 			'priority'     => 'high',
@@ -107,7 +107,7 @@ class App_Showcase_App {
 		// URL
 		$cmb->add_field( array(
 			'name' => __( 'Landing page', 'ogdch' ),
-			'desc' => __( 'Landing page of app', 'ogdch' ),
+			'desc' => __( 'Landing page of the application', 'ogdch' ),
 			'id'   => self::FIELD_PREFIX . 'url',
 			'type' => 'text_url',
 			'protocols' => array( 'http', 'https' ), // Array of allowed protocols
