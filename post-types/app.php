@@ -107,7 +107,6 @@ class App_Showcase_App {
 		// URL
 		$cmb->add_field( array(
 			'name' => __( 'Landing page', 'ogdch' ),
-			'desc' => __( 'Landing page of the application', 'ogdch' ),
 			'id'   => self::FIELD_PREFIX . 'url',
 			'type' => 'text_url',
 			'protocols' => array( 'http', 'https' ), // Array of allowed protocols
