@@ -44,8 +44,8 @@ class App_Showcase_App {
 			'update_item'        => __( 'Update Application', 'ogdch' ),
 			'view_item'          => __( 'View Application', 'ogdch' ),
 			'search_items'       => __( 'Search Applications', 'ogdch' ),
-			'not_found'          => __( 'Not found', 'ogdch' ),
-			'not_found_in_trash' => __( 'Not found in Trash', 'ogdch' ),
+			'not_found'          => __( 'No Applications found', 'ogdch' ),
+			'not_found_in_trash' => __( 'No Applications found in Trash', 'ogdch' ),
 		);
 		$args = array(
 			'label'               => __( 'Applications', 'ogdch' ),
