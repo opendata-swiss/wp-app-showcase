@@ -140,7 +140,7 @@ class App_Showcase_App {
 
 		// Icon
 		$cmb->add_field( array(
-			'name'       => __( 'Icon', 'ogdch' ),
+			'name'       => __( 'Logo', 'ogdch' ),
 			'id'         => self::FIELD_PREFIX . 'icon',
 			'type'       => 'file',
 		) );
