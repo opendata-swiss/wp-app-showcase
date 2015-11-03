@@ -35,7 +35,6 @@ class App_Showcase_App {
 			'singular_name'      => __( 'Application', 'ogdch' ),
 			'menu_name'          => __( 'Applications', 'ogdch' ),
 			'name_admin_bar'     => __( 'Applications', 'ogdch' ),
-			'parent_item_colon'  => __( 'Parent Application:', 'ogdch' ),
 			'all_items'          => __( 'All Applications', 'ogdch' ),
 			'add_new_item'       => __( 'Add New Application', 'ogdch' ),
 			'add_new'            => __( 'Add New', 'ogdch' ),
