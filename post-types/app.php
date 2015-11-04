@@ -51,7 +51,6 @@ class App_Showcase_App {
 			'description'         => __( 'The Application directory', 'ogdch' ),
 			'labels'              => $labels,
 			'supports'            => array( 'title', 'editor', 'thumbnail' ),
-			'taxonomies'          => array( 'post_tag' ),
 			'hierarchical'        => false,
 			'public'              => true,
 			'show_ui'             => true,
@@ -65,7 +64,7 @@ class App_Showcase_App {
 			'exclude_from_search' => false,
 			'publicly_queryable'  => true,
 			'map_meta_cap'        => true,
-			'capability_type'     => 'app',
+			'capability_type'     => array( 'app', 'apps' ),
 			'capabilities'        => array(
 				'edit_posts'             => 'edit_apps',
 				'edit_others_posts'      => 'edit_others_apps',
@@ -105,7 +104,7 @@ class App_Showcase_App {
 
 		// URL
 		$cmb->add_field( array(
-			'name' => __( 'Landing page', 'ogdch' ),
+			'name' => __( 'Landing page', 'ogdch' ) . '*',
 			'id'   => self::FIELD_PREFIX . 'url',
 			'type' => 'text_url',
 			'protocols' => array( 'http', 'https' ), // Array of allowed protocols
@@ -118,7 +117,7 @@ class App_Showcase_App {
 
 		// Author Name
 		$cmb->add_field( array(
-			'name'       => __( 'Author Name', 'ogdch' ),
+			'name'       => __( 'Author Name', 'ogdch' ) . '*',
 			'id'         => self::FIELD_PREFIX . 'author_name',
 			'type'       => 'text',
 			'attributes'  => array(
@@ -128,20 +127,13 @@ class App_Showcase_App {
 
 		// Author Email
 		$cmb->add_field( array(
-			'name' => __( 'Author Email', 'ogdch' ),
+			'name' => __( 'Author Email', 'ogdch' ) . '*',
 			'id'   => self::FIELD_PREFIX . 'author_email',
 			'type' => 'text_email',
 			'attributes'  => array(
 				'placeholder' => 'author@app.dev',
 				'required'    => 'required',
 			),
-		) );
-
-		// Icon
-		$cmb->add_field( array(
-			'name'       => __( 'Logo', 'ogdch' ),
-			'id'         => self::FIELD_PREFIX . 'icon',
-			'type'       => 'file',
 		) );
 
 		// Dataset relations
