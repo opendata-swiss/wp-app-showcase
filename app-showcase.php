@@ -1,9 +1,9 @@
 <?php
 /**
- * Plugin Name: App showcase
- * Description: Plugin to create app showcase of opendata-projects.
- * Author: Team Jazz <juerg.hunziker@liip.ch>
- * Version: 1.0
+ * Plugin Name: App Showcase
+ * Description: Plugin to create app showcase of opendata projects.
+ * Author: Team Jazz <jazz@liip.ch>
+ * Version: 1.0.0
  * Date: 17.08.2015
  *
  * @package AppShowcase
