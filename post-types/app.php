@@ -31,24 +31,24 @@ class App_Showcase_App {
 	 */
 	public function register_post_type() {
 		$labels = array(
-			'name'               => __( 'Applications', 'ogdch' ),
-			'singular_name'      => __( 'Application', 'ogdch' ),
-			'menu_name'          => __( 'Applications', 'ogdch' ),
-			'name_admin_bar'     => __( 'Applications', 'ogdch' ),
-			'all_items'          => __( 'All Applications', 'ogdch' ),
-			'add_new_item'       => __( 'Add New Application', 'ogdch' ),
-			'add_new'            => __( 'Add New', 'ogdch' ),
-			'new_item'           => __( 'New Application', 'ogdch' ),
-			'edit_item'          => __( 'Edit Application', 'ogdch' ),
-			'update_item'        => __( 'Update Application', 'ogdch' ),
-			'view_item'          => __( 'View Application', 'ogdch' ),
-			'search_items'       => __( 'Search Applications', 'ogdch' ),
-			'not_found'          => __( 'No Applications found', 'ogdch' ),
-			'not_found_in_trash' => __( 'No Applications found in Trash', 'ogdch' ),
+			'name'               => __( 'Applications', 'ogdch-app' ),
+			'singular_name'      => __( 'Application', 'ogdch-app' ),
+			'menu_name'          => __( 'Applications', 'ogdch-app' ),
+			'name_admin_bar'     => __( 'Applications', 'ogdch-app' ),
+			'all_items'          => __( 'All Applications', 'ogdch-app' ),
+			'add_new_item'       => __( 'Add New Application', 'ogdch-app' ),
+			'add_new'            => __( 'Add New', 'ogdch-app' ),
+			'new_item'           => __( 'New Application', 'ogdch-app' ),
+			'edit_item'          => __( 'Edit Application', 'ogdch-app' ),
+			'update_item'        => __( 'Update Application', 'ogdch-app' ),
+			'view_item'          => __( 'View Application', 'ogdch-app' ),
+			'search_items'       => __( 'Search Applications', 'ogdch-app' ),
+			'not_found'          => __( 'No Applications found', 'ogdch-app' ),
+			'not_found_in_trash' => __( 'No Applications found in Trash', 'ogdch-app' ),
 		);
 		$args = array(
-			'label'               => __( 'Applications', 'ogdch' ),
-			'description'         => __( 'The Application directory', 'ogdch' ),
+			'label'               => __( 'Applications', 'ogdch-app' ),
+			'description'         => __( 'The Application directory', 'ogdch-app' ),
 			'labels'              => $labels,
 			'supports'            => array( 'title', 'editor', 'thumbnail' ),
 			'hierarchical'        => false,
@@ -95,7 +95,7 @@ class App_Showcase_App {
 		/* CMB Mainbox */
 		$cmb = new_cmb2_box( array(
 			'id'           => self::POST_TYPE . '-box',
-			'title'        => __( 'Application Information', 'ogdch' ),
+			'title'        => __( 'Application Information', 'ogdch-app' ),
 			'object_types' => array( self::POST_TYPE ),
 			'context'      => 'normal',
 			'priority'     => 'high',
@@ -104,7 +104,7 @@ class App_Showcase_App {
 
 		// URL
 		$cmb->add_field( array(
-			'name' => __( 'Landing page', 'ogdch' ) . '*',
+			'name' => __( 'Landing page', 'ogdch-app' ) . '*',
 			'id'   => self::FIELD_PREFIX . 'url',
 			'type' => 'text_url',
 			'protocols' => array( 'http', 'https' ), // Array of allowed protocols
@@ -117,7 +117,7 @@ class App_Showcase_App {
 
 		// Author Name
 		$cmb->add_field( array(
-			'name'       => __( 'Author Name', 'ogdch' ) . '*',
+			'name'       => __( 'Author Name', 'ogdch-app' ) . '*',
 			'id'         => self::FIELD_PREFIX . 'author_name',
 			'type'       => 'text',
 			'attributes'  => array(
@@ -127,7 +127,7 @@ class App_Showcase_App {
 
 		// Author Email
 		$cmb->add_field( array(
-			'name' => __( 'Author Email', 'ogdch' ) . '*',
+			'name' => __( 'Author Email', 'ogdch-app' ) . '*',
 			'id'   => self::FIELD_PREFIX . 'author_email',
 			'type' => 'text_email',
 			'attributes'  => array(
@@ -141,21 +141,21 @@ class App_Showcase_App {
 			'id'      => self::FIELD_PREFIX . 'relations',
 			'type'    => 'group',
 			'options' => array(
-				'group_title'   => __( 'Dataset Relation {#}', 'ogdch' ),
-				'add_button'    => __( 'Add another Dataset Relation', 'ogdch' ),
-				'remove_button' => __( 'Remove Dataset Relation', 'ogdch' ),
+				'group_title'   => __( 'Dataset Relation {#}', 'ogdch-app' ),
+				'add_button'    => __( 'Add another Dataset Relation', 'ogdch-app' ),
+				'remove_button' => __( 'Remove Dataset Relation', 'ogdch-app' ),
 			),
 		) );
 
 		if ( class_exists( 'Ckan_Backend_Local_Dataset' ) ) {
 			$cmb->add_group_field( $relations_group, array(
-				'name' => __( 'Dataset', 'ogdch' ),
+				'name' => __( 'Dataset', 'ogdch-app' ),
 				'id'   => 'dataset_id',
 				'type' => 'dataset_search',
 			) );
 		} else {
 			$cmb->add_group_field( $relations_group, array(
-				'name' => __( 'Dataset', 'ogdch' ),
+				'name' => __( 'Dataset', 'ogdch-app' ),
 				'id'   => 'dataset_id',
 				'type' => 'text',
 			) );
