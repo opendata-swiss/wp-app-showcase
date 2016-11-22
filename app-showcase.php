@@ -63,6 +63,9 @@ if ( ! class_exists( 'App_Showcase', false ) ) {
 		 * @return void
 		 */
 		public function bootstrap() {
+			// Load translation
+			load_plugin_textdomain( 'ogdch-app', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+
 			$this->load_dependencies();
 
 			new App_Showcase_App();

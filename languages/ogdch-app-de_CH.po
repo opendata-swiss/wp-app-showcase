@@ -1,0 +1,103 @@
+# SOME DESCRIPTIVE TITLE.
+# This file is put in the public domain.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: wp-app-showcase 1.0.0\n"
+"Report-Msgid-Bugs-To: jazz@liip.ch\n"
+"POT-Creation-Date: 2016-11-17 10:09+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Stefan Oderbolz <oderbolz@gmail.com>, 2016\n"
+"Language-Team: German (https://www.transifex.com/opendataswiss/teams/54778/de/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: post-types/app.php:34 post-types/app.php:36 post-types/app.php:37
+#: post-types/app.php:50
+msgid "Applications"
+msgstr "Anwendungen"
+
+#: post-types/app.php:35
+msgid "Application"
+msgstr "Anwendung"
+
+#: post-types/app.php:38
+msgid "All Applications"
+msgstr "Alle Anwendungen"
+
+#: post-types/app.php:39
+msgid "Add New Application"
+msgstr "Neue Anwendung erstellen"
+
+#: post-types/app.php:40
+msgid "Add New"
+msgstr "Erstellen"
+
+#: post-types/app.php:41
+msgid "New Application"
+msgstr "Anwendung erstellen"
+
+#: post-types/app.php:42
+msgid "Edit Application"
+msgstr "Anwendung bearbeiten"
+
+#: post-types/app.php:43
+msgid "Update Application"
+msgstr "Anwendung aktualisieren"
+
+#: post-types/app.php:44
+msgid "View Application"
+msgstr "Anwendung anzeigen"
+
+#: post-types/app.php:45
+msgid "Search Applications"
+msgstr "Anwendungen durchsuchen"
+
+#: post-types/app.php:46
+msgid "No Applications found"
+msgstr "Keine Anwendungen gefunden"
+
+#: post-types/app.php:47
+msgid "No Applications found in Trash"
+msgstr "Keine Anwendungen im Papierkorb gefunden"
+
+#: post-types/app.php:51
+msgid "The Application directory"
+msgstr "Anwendungsverzeichnis"
+
+#: post-types/app.php:98
+msgid "Application Information"
+msgstr "Informationen zur Anwendung"
+
+#: post-types/app.php:107
+msgid "Landing page"
+msgstr "Landing Page"
+
+#: post-types/app.php:120
+msgid "Author Name"
+msgstr "Name des Autors"
+
+#: post-types/app.php:130
+msgid "Author Email"
+msgstr "E-Mail des Autors"
+
+#: post-types/app.php:144
+msgid "Dataset Relation {#}"
+msgstr "Verwandter Datensatz {#}"
+
+#: post-types/app.php:145
+msgid "Add another Dataset Relation"
+msgstr "Einen weiteren verwandten Datensatz hinzufügen"
+
+#: post-types/app.php:146
+msgid "Remove Dataset Relation"
+msgstr "Verwandten Datensatz entfernen"
+
+#: post-types/app.php:152 post-types/app.php:158
+msgid "Dataset"
+msgstr "Datensatz"
