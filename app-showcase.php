@@ -54,7 +54,49 @@ if ( ! class_exists( 'App_Showcase', false ) ) {
 		 * Constructor
 		 */
 		public function __construct() {
+			register_activation_hook( __FILE__,  array( $this, 'activate_plugin' ) );
 			add_action( 'init', array( $this, 'bootstrap' ), 0 );
+		}
+
+		/**
+		 * Activation hook, check if we can actually use this plugin
+		 *
+		 * @return void
+		 */
+		public function activate_plugin() {
+			// Require CMB2 plugin
+			if ( ! is_plugin_active( 'cmb2/init.php' ) && current_user_can( 'activate_plugins' ) ) {
+				// Stop activation redirect and show error
+				wp_die( 'Sorry, but this plugin requires CMB2 to be installed and active.' );
+			}
+			// initialize capabilities
+			$this->init_caps();
+		}
+
+		/**
+		 * Initializes capabilities used in this plugin
+		 */
+		public function init_caps() {
+			$post_types = array(
+				'apps',
+			);
+			// Add all capabilities of plugin to administrator role (save in database) to make them visible in backend.
+			$admin_role = get_role( 'administrator' );
+			if ( is_object( $admin_role ) ) {
+				foreach ( $post_types as $post_type ) {
+					$admin_role->add_cap( 'edit_' . $post_type );
+					$admin_role->add_cap( 'edit_others_' . $post_type );
+					$admin_role->add_cap( 'publish_' . $post_type );
+					$admin_role->add_cap( 'read_private_' . $post_type );
+					$admin_role->add_cap( 'delete_' . $post_type );
+					$admin_role->add_cap( 'delete_private_' . $post_type );
+					$admin_role->add_cap( 'delete_published_' . $post_type );
+					$admin_role->add_cap( 'delete_others_' . $post_type );
+					$admin_role->add_cap( 'edit_private_' . $post_type );
+					$admin_role->add_cap( 'edit_published_' . $post_type );
+					$admin_role->add_cap( 'create_' . $post_type );
+				}
+			}
 		}
 
 		/**
