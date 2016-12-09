@@ -7,7 +7,7 @@ DIR=`dirname $SCRIPT`
 
 echo $DIR
 
-# Setup WordPess codestyle
+# Setup WordPress codestyle
 $DIR/bin/phpcs --config-set installed_paths $DIR/vendor/wp-coding-standards/wpcs
 
 # Check code style
