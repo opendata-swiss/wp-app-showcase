@@ -7,8 +7,7 @@ DIR=`dirname $SCRIPT`
 
 echo $DIR
 
-# Installation
-composer install
+# Setup WordPess codestyle
 $DIR/bin/phpcs --config-set installed_paths $DIR/vendor/wp-coding-standards/wpcs
 
 # Check code style
