@@ -2,6 +2,10 @@
 
 WordPress plugin to create an app showcase of OpenData-projects
 
+## Requirements
+
+* [CMB2](https://wordpress.org/plugins/cmb2/) plugin must be installed
+
 ## Installation
 
 Just activate the plugin in the WordPress plugin administration.
