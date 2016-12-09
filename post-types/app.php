@@ -6,7 +6,7 @@
  */
 
 /**
- * Class Ckan_Backend_Local_Dataset
+ * Class App_Showcase_App
  */
 class App_Showcase_App {
 
