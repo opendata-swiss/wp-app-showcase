@@ -8,7 +8,7 @@ DIR=`dirname $SCRIPT`
 echo $DIR
 
 # Installation
-php composer.phar install
+composer install
 $DIR/bin/phpcs --config-set installed_paths $DIR/vendor/wp-coding-standards/wpcs
 
 # Check code style
