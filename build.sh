@@ -8,7 +8,6 @@ DIR=`dirname $SCRIPT`
 echo $DIR
 
 # Installation
-curl -s https://getcomposer.org/installer | php
 php composer.phar install
 $DIR/bin/phpcs --config-set installed_paths $DIR/vendor/wp-coding-standards/wpcs
 
