@@ -1,5 +1,7 @@
 # wp-app-showcase
 
+[![Build Status](https://travis-ci.org/opendata-swiss/wp-app-showcase.svg?branch=master)](https://travis-ci.org/opendata-swiss/wp-app-showcase)
+
 WordPress plugin to create an app showcase of OpenData-projects
 
 ## Requirements
